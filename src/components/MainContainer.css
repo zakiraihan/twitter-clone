@@ -1,0 +1,5 @@
+.main-container {
+  padding-left: 400px;
+  display: flex;
+  /* grid-template-columns: 600px 1fr; */
+}
