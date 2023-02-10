@@ -13,6 +13,9 @@ import NotificationFillIcon from "./notification-fill.svg";
 import NotificationIcon from "./notification.svg";
 import ProfileFillIcon from "./profile-fill.svg";
 import ProfileIcon from "./profile.svg";
+import TopicsIcon from "./topics.svg";
+import TwitterBlueIcon from "./twitter-blue.svg";
+import TwitterCircleIcon from "./twitter-circle.svg";
 import TwitterIcon from "./twitter.svg";
 
 export {
@@ -31,5 +34,8 @@ export {
   NotificationIcon,
   ProfileFillIcon,
   ProfileIcon,
+  TopicsIcon,
+  TwitterBlueIcon,
+  TwitterCircleIcon,
   TwitterIcon                                                                                                                         
 }

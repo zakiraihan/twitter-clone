@@ -1,23 +1,62 @@
 import "./SidebarNav.css";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+
+import { showModal } from "../../slices/modalSlice";
+import { useDispatch } from "react-redux";
 
 export default function SidebarNav(props) {
+  const dispatch = useDispatch();
+  
+  const buttonRef = useRef();
+  const [buttonPosition, setButtonPosition] = useState({
+    top: 0,
+    bottom: 0,
+    left: 0,
+    right: 0
+  })
 
-  const [showMoreOptions, setShowMoreOptions] = useState(false);
+  function getPosition() {
+    const { offsetParent, offsetTop, offsetHeight} = buttonRef.current;
+    const left = offsetParent.offsetLeft;
+    const bottom = offsetParent.offsetHeight - offsetTop - (2 * offsetHeight);
+    setButtonPosition({
+      bottom,
+      left
+    })
+  };
 
   function onClickNavItem() {
-    // props.onClick(props.navItem);
+    console.log(buttonRef.current.offsetParent.offsetLeft);
+    console.log(buttonRef.current.offsetParent.offsetHeight - buttonRef.current.offsetTop - buttonRef.current.offsetHeight);
     if (props.navItem.text === "More") {
-      setShowMoreOptions(true);
+      dispatch(showModal({
+        type: "SidebarMoreOption",
+        location: buttonPosition,
+        props: {}
+      }))    
     }
   }
 
+  useEffect(() => {
+    if (props.navItem.text === "More") {
+      getPosition();
+      window.addEventListener("resize", getPosition);
+    }
+
+    return (() => {
+      if (props.navItem.text === "More") {
+        window.removeEventListener("resize", getPosition);
+      }
+    })
+  }, []);
+
   return (
     <>
-      <a 
+      <div 
         className="sidebar-nav-item"
         onClick={onClickNavItem}
+        ref={buttonRef}
       >
         <div className="sidebar-nav-item-icon">
           <img
@@ -39,7 +78,7 @@ export default function SidebarNav(props) {
         >
           {props.navItem.text}
         </div>
-      </a>
+      </div>
     </>
   )                                             
 }

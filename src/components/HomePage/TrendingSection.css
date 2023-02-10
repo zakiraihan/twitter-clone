@@ -1,12 +1,15 @@
 .trending-container {
   flex: 1;
   max-width: 400px;
+  max-height: 10px;
   padding-inline: 30px;
   border-left: 1px solid #2F3336;
-  position: relative;
+  position: fixed;
+  left: 1000px;
   display: flex;
   flex-direction: column;
   max-height: fit-content;
+  overflow-y: hidden;
 }
 
 .trending-searchbar-container {
@@ -49,7 +52,6 @@
 .trending-item-list {
   background-color: #16181C;
   border-radius: 10px;
-  /* flex:1; */
   width: 340px;
   color: #E7E9EA;
   margin-top: 65px;
@@ -112,3 +114,12 @@
   margin-left: 5px;
 }
 
+.trending-inside-container {
+  height: 100vh;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.trending-inside-container::-webkit-scrollbar {
+  display: none;
+}

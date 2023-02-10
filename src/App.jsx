@@ -1,6 +1,6 @@
 import './App.css';
 
-import { MainContainer, Sidebar } from './components';
+import { MainContainer, ModalContainer, Sidebar } from './components';
 
 import { HomePage } from './pages';
 
@@ -11,6 +11,7 @@ function App() {
       <MainContainer showTrending={true}>
         <HomePage />
       </MainContainer>
+      <ModalContainer />
     </div>
   );
 }
