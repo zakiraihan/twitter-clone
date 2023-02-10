@@ -4,18 +4,10 @@ import { SearchIcon, ThreeDotsIcon } from "../../assets/icons/common";
 import { useEffect, useRef } from "react";
 
 import TrendingItem from "./TrendingItem";
-import { getScrollPosition } from "../../slices/scrollPositionSlice";
 import { trending } from "../../mockData/trending";
-import { useSelector } from "react-redux";
 
 export default function TrendingSection(props) {
   const containerRef = useRef(null);
-
-  function onScroll(event) {
-    // containerRef.current.scrollTop = scrollPosition.vertical;
-    // window.scroll(0, event.currentTarget.scrollTop);
-    event.preventDefault();
-  }
 
   const handleScroll = () => {
     const position = window.scrollY;
@@ -31,7 +23,7 @@ export default function TrendingSection(props) {
   }, []);
 
   return (
-    <section className="trending-container" ref={containerRef} onScroll={onScroll}>
+    <section className="trending-container" ref={containerRef}>
       <div className="trending-searchbar-container">
         <div className="trending-searchbar">
           <img
