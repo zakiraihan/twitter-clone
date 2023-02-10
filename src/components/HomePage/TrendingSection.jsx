@@ -24,31 +24,35 @@ export default function TrendingSection(props) {
 
   return (
     <section className="trending-container" ref={containerRef}>
-      <div className="trending-searchbar-container">
-        <div className="trending-searchbar">
-          <img
-            src={SearchIcon}
-          />
-          <input
-            placeholder="Search Twitter"
-          />
-        </div>
-      </div>
       <div className="trending-inside-container">
-        <div className="trending-item-list">
-          <div className="trending-header">
-            Trends for you
-          </div>
-          {trending.map((item, index) => (
-            <TrendingItem 
-              key={index}
-              item={item}
-            />
-          ))}
-          <div className="trending-item-footer">
-            Show more
-          </div>
-        </div>
+        {props.showTrending &&
+          <>
+            <div className="trending-searchbar-container">
+              <div className="trending-searchbar">
+                <img
+                  src={SearchIcon}
+                />
+                <input
+                  placeholder="Search Twitter"
+                />
+              </div>
+            </div>
+            <div className="trending-item-list">
+              <div className="trending-header">
+                Trends for you
+              </div>
+              {trending.map((item, index) => (
+                <TrendingItem 
+                  key={index}
+                  item={item}
+                />
+              ))}
+              <div className="trending-item-footer">
+                Show more
+              </div>
+            </div>
+          </>
+        }
         <footer className="trending-footer">
           <div className="trending-footer-row">
             <p>Terms of Service</p>

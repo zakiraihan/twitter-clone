@@ -116,10 +116,4 @@
 
 .trending-inside-container {
   height: 100vh;
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
-}
-
-.trending-inside-container::-webkit-scrollbar {
-  display: none;
 }
