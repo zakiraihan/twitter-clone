@@ -95,10 +95,25 @@
   background-color: #141515;
 }
 
-.tweet-post-setting > .tweet-button {
+.tweet-post-setting-right {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 100px;
+  align-items: center;
+  position: relative;
+}
+
+.tweet-post-setting-right .tweet-button {
   position: absolute;
   width: fit-content;
   padding: 8px 16px;
   right: 14px;
 }
 
+.tweet-post-progress {
+  width: 20px;
+  height: 20px;
+  float: right;
+}

@@ -10,7 +10,8 @@ function MessageBar(props) {
   const [messageBarHeight, setMessageBarHeight] = useState("52px");
 
 
-  function onClickExpand() {
+  function onClickExpand(event) {
+    event.preventDefault();
     setArrowRotate((prevArrowRotate) => {
       var rotateTo = (prevArrowRotate + 180) % 360;
       return rotateTo;
@@ -28,11 +29,14 @@ function MessageBar(props) {
         height: messageBarHeight
       }}
     >
-      <div className="messagebar-inner-container">
+      <div className="messagebar-header-container" onClick={onClickExpand}>
         <div className="messagebar-title">
           Messages
         </div>
-        <div className="messagebar-images-container">
+        <div className="messagebar-images-container" onClick={(event) => {
+           event.stopPropagation();
+           console.log("Chips Ahoyyy")
+        }}>
           <div className="messagebar-image-container">
             <div className="messagebar-image-text">
               New message
@@ -40,7 +44,8 @@ function MessageBar(props) {
             <img src={ NewMessageIcon } alt="Message icon" className="messagebar-envelope-icon"/>
             <img src={ PlusIcon } alt="Message icon" className="messagebar-plus-icon"/>
           </div>
-          <div className="messagebar-image-container">
+          <div className="messagebar-image-container" 
+              onClick={onClickExpand}>
             <div className="messagebar-image-text">
               Expand
             </div>
@@ -48,7 +53,6 @@ function MessageBar(props) {
               src={ DoubleArrowUpIcon } 
               alt="Message icon" 
               className="messagebar-arrow-icon"
-              onClick={onClickExpand}
               style={{
                 transform: `rotate(${arrowRotate}deg)`
               }}

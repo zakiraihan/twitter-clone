@@ -1,6 +1,8 @@
 import "./TweetPost.css";
+import 'react-circular-progressbar/dist/styles.css';
 
 import { ArrowBottomBlueIcon, GlobeIcon } from "../../assets/icons/common";
+import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import { EmojiIcon, GifIcon, PhotoIcon, PollIcon } from "../../assets/icons/tweet";
 import { useLayoutEffect, useRef, useState } from "react";
 
@@ -58,7 +60,19 @@ export default function TweetPost(props) {
           <img src={GifIcon}/>
           <img src={PollIcon}/>
           <img src={EmojiIcon}/>
-          <TweetButton disabled={!(tweetVal.length > 0 && tweetVal.length < 140)}/>
+          <div className="tweet-post-setting-right">
+            <div className="tweet-post-progress">
+              <CircularProgressbar 
+                value={tweetVal.length} 
+                maxValue={140} 
+                // strokeWidth={15}
+                styles={buildStyles({
+                  trailColor: '#2F3336',
+                })}
+              />
+            </div>
+            <TweetButton disabled={!(tweetVal.length > 0 && tweetVal.length < 140)}/>
+          </div>
         </div>
       </div>  
     </TweetContainer>
