@@ -13,11 +13,29 @@ const MIN_TEXTAREA_HEIGHT = 32;
 
 export default function TweetPost(props) {
   const textareaRef = useRef(null);
-  const [tweetVal, setTweetVal] = useState("");
   const [isTextAreaFocused, setIsTextAreaFocused] = useState(false);
-
+  const [tweetVal, setTweetVal] = useState("");
+  const charLeft = 140 - tweetVal.replace(/\n/g, "").length
+  
   const onChange = (event) => setTweetVal(event.target.value);
   const onFocus = () => setIsTextAreaFocused(true); 
+
+  function tweetProgressColor() {
+    if (charLeft > 20) return "#1D9BF0";
+    else if (charLeft > 0) return "#FFD400";
+    else return "#F4212E"; 
+  }
+
+  function adjustTweetProgressSize() {
+    let size = "20px";
+
+    if (charLeft <= 20) size = "30px";
+
+    return {
+      width: size,
+      height: size
+    }
+  }
 
   useLayoutEffect(() => {
     // Reset height - important to shrink on delete
@@ -61,16 +79,23 @@ export default function TweetPost(props) {
           <img src={PollIcon}/>
           <img src={EmojiIcon}/>
           <div className="tweet-post-setting-right">
-            <div className="tweet-post-progress">
-              <CircularProgressbar 
-                value={tweetVal.length} 
-                maxValue={140} 
-                // strokeWidth={15}
-                styles={buildStyles({
-                  trailColor: '#2F3336',
-                })}
-              />
-            </div>
+            {tweetVal.length > 0 &&
+              <div style={adjustTweetProgressSize()}>
+                <CircularProgressbar 
+                  value={tweetVal.length} 
+                  maxValue={140} 
+                  text={charLeft > 20 ? "" : `${charLeft}`}
+                  // strokeWidth={15}
+                  styles={buildStyles({
+                    textSize: '35px',
+                    textColor: tweetProgressColor(),
+                    pathColor: tweetProgressColor(),
+                    trailColor: "#2F3336",
+                  })}
+                />
+              </div>
+            }
+            
             <TweetButton disabled={!(tweetVal.length > 0 && tweetVal.length < 140)}/>
           </div>
         </div>
