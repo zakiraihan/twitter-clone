@@ -1,5 +1,6 @@
 import "./TweetPost.css";
 
+import { ArrowBottomBlueIcon, GlobeIcon } from "../../assets/icons/common";
 import { EmojiIcon, GifIcon, PhotoIcon, PollIcon } from "../../assets/icons/tweet";
 import { useLayoutEffect, useRef, useState } from "react";
 
@@ -10,8 +11,11 @@ const MIN_TEXTAREA_HEIGHT = 32;
 
 export default function TweetPost(props) {
   const textareaRef = useRef(null);
-  const [value, setValue] = useState("");
-  const onChange = (event) => setValue(event.target.value);
+  const [tweetVal, setTweetVal] = useState("");
+  const [isTextAreaFocused, setIsTextAreaFocused] = useState(false);
+
+  const onChange = (event) => setTweetVal(event.target.value);
+  const onFocus = () => setIsTextAreaFocused(true); 
 
   useLayoutEffect(() => {
     // Reset height - important to shrink on delete
@@ -21,7 +25,7 @@ export default function TweetPost(props) {
       textareaRef.current.scrollHeight,
       MIN_TEXTAREA_HEIGHT
     )}px`;
-  }, [value]);
+  }, [tweetVal]);
 
   return (
     <TweetContainer
@@ -30,22 +34,31 @@ export default function TweetPost(props) {
       type={"POST"}
     >
       <div className="tweet-post-container">
+        {isTextAreaFocused &&
+          <div className="tweet-audience">
+            Everyone
+            <img src={ ArrowBottomBlueIcon } alt="Audience arrow"/>
+          </div>
+        }
         <textarea
           onChange={onChange}
+          onFocus={onFocus}
           ref={textareaRef}
           placeholder="What's happening?"
-          style={{
-            minHeight: MIN_TEXTAREA_HEIGHT,
-            resize: "none"
-          }}
-          value={value}
+          value={tweetVal}
         />
+        {isTextAreaFocused &&
+          <div className="tweet-reply">
+            <img src={ GlobeIcon } alt="Reply globe"/>
+            Everyone can reply
+          </div>
+        }
         <div className="tweet-post-setting">
           <img src={PhotoIcon}/>
           <img src={GifIcon}/>
           <img src={PollIcon}/>
           <img src={EmojiIcon}/>
-          <TweetButton />
+          <TweetButton disabled={!(tweetVal.length > 0 && tweetVal.length < 140)}/>
         </div>
       </div>  
     </TweetContainer>

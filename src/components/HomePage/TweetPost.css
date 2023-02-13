@@ -5,12 +5,42 @@
   align-items: baseline;
 }
 
+.tweet-audience,
+.tweet-reply {
+  display: flex;
+  align-items: center;
+
+  color: #1D9BF0;
+  font-size: 13.5px;
+  font-weight: 700;
+}
+
+.tweet-audience {
+  padding: 3px 12px;
+  margin-top: 10px;
+
+  border: 1px solid #536471;
+  border-radius: 20px;
+  
+  cursor: pointer;
+}
+
+.tweet-audience > img {
+  width: 14px;
+  margin-left: 6px;
+}
+
+.tweet-audience:hover {
+  background-color: #031018;
+}
+
 .tweet-post-container > textarea {
   overflow: auto !important;
   outline: none !important;
   border: none !important;
   
   width: 100%;
+  resize: none;
   background-color: transparent;
   color: #E7E9EA;
   font-size: 20px;
@@ -29,9 +59,25 @@
   color: #71767B;
 }
 
+.tweet-reply {
+  width: 97%;
+  margin-top: 10px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #2F3336;
+  
+  cursor: pointer;
+}
+
+.tweet-reply > img{
+  width: 15px;
+  margin-left: 8px;
+  margin-right: 5px;
+  /* background-color: red; */
+}
+
 .tweet-post-setting {
   width: 100%;
-  height: 70px;
+  height: 55px;
   display: flex;
   align-items: center;
   position: relative;
@@ -39,15 +85,20 @@
 
 .tweet-post-setting > img {
   margin-right: 5px;
-  width: 30px;
+  padding: 2px;
+  border-radius: 20px;
+  width: 34px;
   cursor: pointer;
+}
+
+.tweet-post-setting > img:hover {
+  background-color: #141515;
 }
 
 .tweet-post-setting > .tweet-button {
   position: absolute;
   width: fit-content;
-  padding-inline: 20px;
+  padding: 8px 16px;
   right: 14px;
-  z-index: 100;
 }
 

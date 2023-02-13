@@ -27,8 +27,6 @@ export default function SidebarNav(props) {
   };
 
   function onClickNavItem() {
-    console.log(buttonRef.current.offsetParent.offsetLeft);
-    console.log(buttonRef.current.offsetParent.offsetHeight - buttonRef.current.offsetTop - buttonRef.current.offsetHeight);
     if (props.navItem.text === "More") {
       dispatch(showModal({
         type: "SidebarMoreOption",

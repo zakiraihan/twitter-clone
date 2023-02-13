@@ -1,8 +1,8 @@
 import './App.css';
 
-import { MainContainer, ModalContainer, Sidebar } from './components';
+import { MainContainer, MessageBar, ModalContainer, Sidebar } from './components';
 
-import { HomePage } from './pages';
+import { HomePage } from './views';
 
 function App() {
   return (
@@ -11,6 +11,7 @@ function App() {
       <MainContainer showTrending={true}>
         <HomePage />
       </MainContainer>
+      <MessageBar />
       <ModalContainer />
     </div>
   );
