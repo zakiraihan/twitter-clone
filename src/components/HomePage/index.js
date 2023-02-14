@@ -1,7 +1,7 @@
-import TrendingSection from "./TrendingSection";
+import HomeHeader from "./HomeHeader";
 import TweetPost from "./TweetPost";
 
 export {
-  TrendingSection,
+  HomeHeader,
   TweetPost
 }

@@ -1,19 +1,38 @@
 import './App.css';
 
-import { MainContainer, MessageBar, ModalContainer, Sidebar } from './components';
+import { Navigate, Route, Routes, useLocation, useNavigate } from "react-router-dom";
 
 import { HomePage } from './views';
+import { Layout } from './components';
+import { useEffect } from 'react';
 
 function App() {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.pathname === "/") {
+      navigate("/home");
+    }
+  }, [])
+
+  const routes = [
+    {
+      path: "/home",
+      element: <HomePage title={"Home"}/>,
+    }
+  ]
+
+
   return (
-    <div className="app">
-      <Sidebar />
-      <MainContainer showTrending={true}>
-        <HomePage />
-      </MainContainer>
-      <MessageBar />
-      <ModalContainer />
-    </div>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        {/* <Route path="/home" element={<HomePage title={"Home"} />} /> */}
+        {routes.map((route, index) => (
+          <Route key={index} path={route.path} element={route.element} />
+        ))}
+      </Route>
+    </Routes>
   );
 }
 

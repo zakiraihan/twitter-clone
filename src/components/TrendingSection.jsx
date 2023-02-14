@@ -1,10 +1,10 @@
 import "./TrendingSection.css";
 
-import { SearchIcon, ThreeDotsIcon } from "../../assets/icons/common";
+import { SearchIcon, ThreeDotsIcon } from "../assets/icons/common";
 import { useEffect, useRef } from "react";
 
 import TrendingItem from "./TrendingItem";
-import { trending } from "../../mockData/trending";
+import { trending } from "../mockData/trending";
 
 export default function TrendingSection(props) {
   const containerRef = useRef(null);

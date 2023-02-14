@@ -1,6 +1,6 @@
 import "./TrendingItem.css";
 
-import { ThreeDotsIcon } from "../../assets/icons/common";
+import { ThreeDotsIcon } from "../assets/icons/common";
 
 export default function TrendingItem(props) {
   const TrendingType = () => {

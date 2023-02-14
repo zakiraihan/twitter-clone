@@ -85,7 +85,6 @@ export default function TweetPost(props) {
                   value={tweetVal.length} 
                   maxValue={140} 
                   text={charLeft > 20 ? "" : `${charLeft}`}
-                  // strokeWidth={15}
                   styles={buildStyles({
                     textSize: '35px',
                     textColor: tweetProgressColor(),
