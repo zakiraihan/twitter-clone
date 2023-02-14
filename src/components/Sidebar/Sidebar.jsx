@@ -21,7 +21,7 @@ export default function Sidebar(props) {
   const { fullname, username, photo: profilePicture } = useSelector(getUser);
   
   function handleNavItemClick(navItem) {
-    setCurrentActive(navItem.text);
+    setCurrentActive(navItem.text.replace());
     if (navItem.path) {
       navigate(navItem.path);
     }

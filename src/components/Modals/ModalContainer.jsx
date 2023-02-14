@@ -4,19 +4,15 @@ import React, { useEffect } from 'react'
 import { closeModal, getModalState } from "../../slices/modalSlice";
 import { useDispatch, useSelector } from "react-redux";
 
+import ProfileHeaderPhoto from "./ProfileHeaderPhoto";
+import ProfilePhoto from "./ProfilePhoto";
 import SidebarMoreOptions from "./SidebarMoreOptions";
+import { modalType } from "../../enum/modalType";
 
 function ModalContainer(props) {
   const dispatch = useDispatch();
 
   const modalState = useSelector(getModalState);
-
-  const defaultCardContainerPosition = {
-    top: 0,
-    bottom: 0,
-    left: 0,
-    right: 0
-  }
 
   function onClickArea(event) {
     event.preventDefault();
@@ -25,10 +21,38 @@ function ModalContainer(props) {
     }
   }
 
+  function closeModalMethod(event) {
+    event.preventDefault();
+    event.stopPropagation();
+    dispatch(closeModal());
+  }
+
   function ModalSelector() {
     switch(modalState.type){
-      case "SidebarMoreOption":
-        return <SidebarMoreOptions />
+      case modalType.sidebarMoreOption:
+        return (
+          <SidebarMoreOptions 
+            style={modalState.style}
+            closeModalMethod={closeModalMethod}
+            {...modalState.props} 
+          />
+        );
+      case modalType.profileHeaderPhoto:
+        return (
+          <ProfileHeaderPhoto 
+            style={modalState.style}
+            closeModalMethod={closeModalMethod}
+            {...modalState.props} 
+          />
+        );
+      case modalType.profilePhoto:
+        return (
+          <ProfilePhoto 
+            style={modalState.style}
+            closeModalMethod={closeModalMethod}
+            {...modalState.props} 
+          />
+        );
     }
   }
   
@@ -39,9 +63,7 @@ function ModalContainer(props) {
       }}
       onClick={onClickArea}
     >
-      <div className="modal-card-container" style={modalState.location || defaultCardContainerPosition}>
-        <ModalSelector />
-      </div>
+      <ModalSelector />
     </div>
   )
 }

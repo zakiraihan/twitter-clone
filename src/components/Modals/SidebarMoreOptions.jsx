@@ -22,7 +22,7 @@ import React, { useEffect } from 'react'
 import SidebarNav from "../Sidebar/SidebarNav";
 import { useState } from "react";
 
-//---- Constant ----
+//#region Constant
 const dropDown = {
   CREATOR: "CREATOR",
   PROFESSIONAL: "PROFESSIONAL",
@@ -97,10 +97,10 @@ const dropDownItems = [
     ]
   }
 ]
-//--- End Of Constant ----
+// #endregion
 
-function SidebarMoreOptions(props) {
-
+function SidebarMoreOptions({ style }) {
+  
   const [selectedDropdown, setSelectedDropdown] = useState("");
 
   function onClickDropdown(item) {
@@ -117,53 +117,55 @@ function SidebarMoreOptions(props) {
   }
 
   return (
-    <div className="sidebar-more-option-container">
-      {moreNavItems.map((item, index) => (
-        <div className="sidebar-more-option" key={item.text}>
-          <SidebarNav 
-            key={item.text} 
-            navItem={item}
-            // onClick={handleNavItemClick}
-            isActive={true}
-            counter={0}
-          />
-        </div>
-      ))}
-      <div className="sidebar-more-option-separator"></div>
-      {dropDownItems.map((item, index) => (
-        <>
-          <div 
-            className="sidebar-more-option-dropdown"
-            onClick={() => onClickDropdown(item)}
-            key={ item.title }
-          >
-            <p>{ item.title }</p>
-            <img
-              src={ selectedDropdown === item.type ? ArrowUpIcon : ArrowBottomIcon }
-              style={selectedDropdown === item.type ? {
-                width: "13px",
-                marginRight: "2px"
-              } : null}
-              alt="Arrow bottom"
+    <div className="sidebar-more-option-modal-container" style={ style }>
+      <div className="sidebar-more-option-container">
+        {moreNavItems.map((item, index) => (
+          <div className="sidebar-more-option" key={item.text}>
+            <SidebarNav 
+              key={item.text} 
+              navItem={item}
+              // onClick={handleNavItemClick}
+              isActive={true}
+              counter={0}
             />
           </div>
-          {selectedDropdown === item.type &&
-            (item.childs.map((child, childIndex) => (
-              <div 
-                className="sidebar-more-option-dropdown-child"
-                onClick={() => onClickDropdownChild(child)}
-                key={ child.title }
-              >
-                <img
-                  src={ child.icon }
-                  alt={`Child dropdown: ${child.title}`}
-                />
-                <p>{ child.title }</p>
-              </div>
-            )))
-          }
-        </>
-      ))}
+        ))}
+        <div className="sidebar-more-option-separator"></div>
+        {dropDownItems.map((item, index) => (
+          <>
+            <div 
+              className="sidebar-more-option-dropdown"
+              onClick={() => onClickDropdown(item)}
+              key={ item.title }
+            >
+              <p>{ item.title }</p>
+              <img
+                src={ selectedDropdown === item.type ? ArrowUpIcon : ArrowBottomIcon }
+                style={selectedDropdown === item.type ? {
+                  width: "13px",
+                  marginRight: "2px"
+                } : null}
+                alt="Arrow bottom"
+              />
+            </div>
+            {selectedDropdown === item.type &&
+              (item.childs.map((child, childIndex) => (
+                <div 
+                  className="sidebar-more-option-dropdown-child"
+                  onClick={() => onClickDropdownChild(child)}
+                  key={ child.title }
+                >
+                  <img
+                    src={ child.icon }
+                    alt={`Child dropdown: ${child.title}`}
+                  />
+                  <p>{ child.title }</p>
+                </div>
+              )))
+            }
+          </>
+        ))}
+      </div>
     </div>
   )
 }

@@ -2,6 +2,7 @@ import "./SidebarNav.css";
 
 import { useEffect, useRef, useState } from "react";
 
+import { modalType } from "../../enum/modalType";
 import { showModal } from "../../slices/modalSlice";
 import { useDispatch } from "react-redux";
 
@@ -29,8 +30,8 @@ export default function SidebarNav(props) {
   function onClickNavItem() {
     if (props.navItem.text === "More") {
       dispatch(showModal({
-        type: "SidebarMoreOption",
-        location: buttonPosition,
+        type: modalType.sidebarMoreOption,
+        style: buttonPosition,
         props: {}
       }))
       return;    

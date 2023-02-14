@@ -35,7 +35,6 @@ function MessageBar(props) {
         </div>
         <div className="messagebar-images-container" onClick={(event) => {
            event.stopPropagation();
-           console.log("Chips Ahoyyy")
         }}>
           <div className="messagebar-image-container">
             <div className="messagebar-image-text">

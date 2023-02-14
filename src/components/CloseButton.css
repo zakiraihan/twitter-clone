@@ -1,0 +1,40 @@
+.close-button {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+  top: 15px;
+  left: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  cursor: pointer;
+}
+
+.close-button > img {
+  width: 19px;
+}
+
+.close-button:hover {
+  background-color: #2B3337;
+}
+
+.close-text {
+ background-color: #4a5B6A;
+ color: #E7E9EA;
+ font-size: 12px;
+ padding: 3px;
+ border-radius: 2px;
+
+ position: absolute;
+ bottom: -25px;
+ opacity: 0;
+ transition: opacity 1s;
+
+ pointer-events: none;
+}
+
+.close-button:hover > .close-text {
+  opacity: 1;
+}

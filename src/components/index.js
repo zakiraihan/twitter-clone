@@ -1,3 +1,5 @@
+import BackButton from "./BackButton";
+import CloseButton from "./CloseButton";
 import Layout from "./Layout";
 import MainContainer from "./MainContainer";
 import MessageBar from "./MessageBar/MessageBar";
@@ -9,6 +11,8 @@ import TweetContainer from "./TweetContainer";
 import TweetView from "./TweetView";
 
 export {
+  BackButton,
+  CloseButton,
   Layout,
   MainContainer,
   MessageBar,

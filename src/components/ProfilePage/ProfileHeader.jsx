@@ -1,19 +1,13 @@
 import "./ProfileHeader.css";
 
-import { ArrowLeft } from "../../assets/icons/common";
+import BackButton from "../BackButton";
 import { useNavigate } from "react-router-dom";
 
 function ProfileHeader(props) {
-  const navigate = useNavigate();
-
-  function onClickArrow() {
-    navigate(-1);
-  }
+  
   return (
     <div className="profile-header-container">
-      <div className="profile-header-arrow" onClick={onClickArrow}>
-        <img src={ ArrowLeft } alt="Back Arrow"/>
-      </div>
+      <BackButton />
       <div className="profile-header-details">
         <p className="profile-header-name">
           Zaki Raihan

@@ -1,3 +1,6 @@
+.sidebar-more-option-modal-container {
+  position: absolute;
+}
 .sidebar-more-option-container {
   width: 320px;
   background-color: black;

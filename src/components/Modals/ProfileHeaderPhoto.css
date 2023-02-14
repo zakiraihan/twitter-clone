@@ -1,0 +1,21 @@
+.modal-profile-header-photo-container {
+  background-color: rgba(25, 34, 38, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+
+.modal-profile-header-photo {
+  width: 100%;
+}
+
+.modal-profile-header-photo > img {
+  width: 100%;
+}
+

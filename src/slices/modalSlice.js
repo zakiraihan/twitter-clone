@@ -2,13 +2,14 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   modal: {
-    type: "none", // "none", "SidebarMoreOption", etc
-    location: {
+    type: "none", // check on ../enum/modalType.js
+    style: {
       top: 0,
       bottom: 0,
       left: 0,
       right: 0
     },
+    cardContainerClass: "",
     props: {}
   }
 }
@@ -19,7 +20,10 @@ const modalSlice = createSlice({
   reducers: {
     showModal: {
       reducer(state, action) {
-        state.modal = action.payload
+        state.modal = {
+          ...state.modal,
+          ...action.payload
+        }
       }
     },
     closeModal: {

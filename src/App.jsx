@@ -17,7 +17,10 @@ function App() {
   }, [])
 
   useEffect(() => {
-    document.title = getRouteTitle(location);
+    const defaultTitle = "Twitter";
+    const titleFromRoute = getRouteTitle(location);
+    document.title = titleFromRoute === defaultTitle ? 
+      defaultTitle : titleFromRoute + ` / ${defaultTitle}`;
   }, [location])
 
   return (
