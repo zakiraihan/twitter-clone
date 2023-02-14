@@ -20,7 +20,8 @@ export const navItems = [
   {
     icon: HomeIcon,
     iconFill: HomeFillIcon,
-    text: "Home"
+    text: "Home",
+    path: "/home"
   },
   {
     icon: ExploreIcon,
@@ -50,7 +51,8 @@ export const navItems = [
   {
     icon: ProfileIcon,
     iconFill: ProfileFillIcon,
-    text: "Profile"
+    text: "Profile",
+    path: "/profile"
   },
   {
     icon: MoreIcon,

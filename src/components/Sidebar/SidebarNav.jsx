@@ -32,8 +32,11 @@ export default function SidebarNav(props) {
         type: "SidebarMoreOption",
         location: buttonPosition,
         props: {}
-      }))    
+      }))
+      return;    
     }
+
+    props.onClick(props.navItem);
   }
 
   useEffect(() => {

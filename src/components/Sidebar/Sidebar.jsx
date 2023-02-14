@@ -4,15 +4,23 @@ import { ArrowBottomIcon } from "../../assets/icons/common";
 import SidebarNav from "./SidebarNav";
 import TweetButton from "../TweetButton";
 import { TwitterIcon } from "../../assets/icons/menu";
+import { getUser } from "../../slices/userSlice";
 import { navItems } from "./navItems";
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 import { useState } from "react";
 
 export default function Sidebar(props) {
-  
+  const navigate = useNavigate();
   const [currentActive, setCurrentActive] = useState(navItems[0].text);
+
+  const { fullname, username, photo: profilePicture } = useSelector(getUser);
   
   function handleNavItemClick(navItem) {
     setCurrentActive(navItem.text);
+    if (navItem.path) {
+      navigate(navItem.path);
+    }
   }
 
   return  (
@@ -43,16 +51,16 @@ export default function Sidebar(props) {
           <div className="sidebar-profile">
             <div className="sidebar-profile-pict">
               <img
-                src={"https://pbs.twimg.com/profile_images/1614997164140433410/OM6aUbAO_400x400.jpg"}
+                src={ profilePicture }
                 alt="User profile picture"
               />
             </div>
             <div className="sidebar-profile-user">
               <p className="full-name"> 
-                Zaki Raihan
+                { fullname }
               </p>
               <p className="username">
-                @narukami_80
+                { username }
               </p>
             </div>
 

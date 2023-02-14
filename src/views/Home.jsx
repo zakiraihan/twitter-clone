@@ -10,8 +10,8 @@ export default function HomePage(props) {
   const [activeTab, setActiveTab] = useState(1);
   const [followingTweets, setFollowingTweets] = useState([]);
   const [forYouTweets, setForYouTweets] = useState([]);
+  
   useEffect(() => {
-    document.title = props.title;
     setFollowingTweets(homeTweet);
   }, [])
 
@@ -21,7 +21,7 @@ export default function HomePage(props) {
 
   return (
     <div className="page-container">
-      <section className="home-container">
+      <section className="page-left-container">
         <HomeHeader onClickTab={onClickTab} activeTab={activeTab}/>
         <TweetPost 
           profilePict={"https://pbs.twimg.com/profile_images/1614997164140433410/OM6aUbAO_400x400.jpg"}

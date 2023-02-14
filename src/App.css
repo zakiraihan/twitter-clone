@@ -2,3 +2,15 @@
   min-height: 100vh;
   background-color: #000;
 }
+
+.page-container {
+  display: flex;
+}
+
+.page-left-container {
+  min-height: 100vh;
+  width: 600px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
