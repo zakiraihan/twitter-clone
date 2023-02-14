@@ -1,10 +1,9 @@
 import './App.css';
 
-import { Navigate, Route, Routes, useLocation, useNavigate } from "react-router-dom";
+import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
+import { getRouteTitle, routes } from "./routes";
 
-import { HomePage } from './views';
 import { Layout } from './components';
-import Profile from './views/Profile';
 import { useEffect } from 'react';
 
 function App() {
@@ -18,26 +17,8 @@ function App() {
   }, [])
 
   useEffect(() => {
-    document.title = "Twitter";
-    
-    const currentRoute = routes.find(route => route.path === location.pathname);
-    if(currentRoute && currentRoute.title) document.title = currentRoute.title;
-    
+    document.title = getRouteTitle(location);
   }, [location])
-
-  const routes = [
-    {
-      path: "/home",
-      title: "Home",
-      element: <HomePage title="Home"/>,
-    },
-    {
-      path: "/profile",
-      title: "Profile",
-      element: <Profile title="Profile"/>
-    }
-  ]
-
 
   return (
     <Routes>

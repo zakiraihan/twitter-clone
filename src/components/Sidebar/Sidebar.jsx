@@ -1,17 +1,21 @@
 import "./Sidebar.css";
 
+import { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+
 import { ArrowBottomIcon } from "../../assets/icons/common";
 import SidebarNav from "./SidebarNav";
 import TweetButton from "../TweetButton";
 import { TwitterIcon } from "../../assets/icons/menu";
+import { getRouteTitle } from "../../routes";
 import { getUser } from "../../slices/userSlice";
-import { navItems } from "./navItems";
-import { useNavigate } from "react-router-dom";
+import { navItems } from "../../routes/navItems";
 import { useSelector } from "react-redux";
-import { useState } from "react";
 
 export default function Sidebar(props) {
   const navigate = useNavigate();
+  const location = useLocation();
+  
   const [currentActive, setCurrentActive] = useState(navItems[0].text);
 
   const { fullname, username, photo: profilePicture } = useSelector(getUser);
@@ -22,6 +26,10 @@ export default function Sidebar(props) {
       navigate(navItem.path);
     }
   }
+
+  useEffect(() => {
+    setCurrentActive(getRouteTitle(location));
+  }, [location])
 
   return  (
     <header className="sidebar">

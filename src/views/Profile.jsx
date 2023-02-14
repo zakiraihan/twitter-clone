@@ -12,7 +12,7 @@ const tabTypes = {
   likes: "Likes"
 }
 
-function Profile(props) {
+function ProfilePage(props) {
   const [selectedTab, setSelectedTab] = useState(tabTypes.tweets);
   const [tabDataCounts, setTabDataCounts] = useState({
     [tabTypes.tweets]: 10,
@@ -36,4 +36,4 @@ function Profile(props) {
   )
 }
 
-export default Profile
+export default ProfilePage

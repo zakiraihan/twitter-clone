@@ -14,7 +14,7 @@ import {
   NotificationIcon,
   ProfileFillIcon,
   ProfileIcon
-} from "../../assets/icons/menu";
+} from "../assets/icons/menu";
 
 export const navItems = [
   {
