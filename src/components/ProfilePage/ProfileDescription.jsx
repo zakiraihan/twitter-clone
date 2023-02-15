@@ -4,9 +4,13 @@ import { closeModal, showModal } from "../../slices/modalSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 import { getUser } from "../../slices/userSlice";
+import { translate } from "../../utils/translator";
+import { useEffect } from "react";
+import { useState } from "react";
 
 function ProfileDescription(props) {
   const dispatch = useDispatch();
+  const [translatedBio, setTranslatedBio] = useState("");
   const {
     fullname,
     username,
@@ -32,6 +36,10 @@ function ProfileDescription(props) {
       }
     }))
   }
+
+  useEffect(() => {
+    translate(bio).then(translated => console.log(translated))
+  }, [bio])
 
   return (
     <div className="profile-description-container">
@@ -63,6 +71,9 @@ function ProfileDescription(props) {
         </div>
         <div className="profile-description-bio">
           { bio }
+        </div>
+        <div className="profile-description-bio">
+          { JSON.stringify(translate(bio)) }
         </div>
       </div>
     </div>
