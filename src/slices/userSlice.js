@@ -6,7 +6,7 @@ const initialState = {
     username: "@narukami_80",
     photo: "https://pbs.twimg.com/profile_images/1614997164140433410/OM6aUbAO_400x400.jpg",
     headerPhoto: "https://pbs.twimg.com/profile_banners/1590285194/1646365433/1500x500",
-    bio: `"Tidakkah kita melihat, manusia justru diuji dari apa yang paling diinginkannya?"`
+    bio: `穏`
   },
   jwtToken: "token"
 }

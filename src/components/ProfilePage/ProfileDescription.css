@@ -55,8 +55,9 @@
 .profile-description-detail {
   width: 100%;
   position: relative;
-  padding-inline: 15px;
+  padding-inline: 17px;
   padding-top: 83px;
+  padding-bottom: 20px;
 }
 
 .profile-edit-button {
@@ -92,4 +93,81 @@
 .profile-description-bio {
   color: #E7E9EA;
   font-size: 15px;
+}
+
+.profile-description-translate {
+  width: 100%;
+  color: #1D9BF0;
+  font-size: 12px;
+  margin-block: 5px;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+
+  cursor: pointer;
+}
+
+.profile-description-translate:hover {
+  text-decoration: underline;
+}
+
+.profile-description-translate > img {
+  height: 30px;
+  margin-left: 5px;
+}
+
+.profile-description-loading {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.profile-location-date-container {
+  color: #71767B;
+  display: flex;
+  font-size: 14px;
+}
+
+.profile-location-date-container > div {
+  margin-right: 15px;
+  display: flex;
+  align-items: center;
+}
+
+.profile-location-date-container img {
+  height: 20px;
+  margin-right: 5px;
+}
+
+.profile-follow-statistic {
+  width: 100%;
+  display: flex;
+  align-items: center;
+
+  margin-top: 15px;
+}
+
+.profile-follow-statistic > div {
+  display: flex;
+  margin-right: 20px;
+
+  cursor: pointer;
+}
+
+.profile-follow-statistic > div:hover {
+  border-bottom: 1px solid #FFF;
+}
+
+.profile-follow-statistic-count {
+  color: #E7E9EA;
+  font-size: 14px;
+  font-weight: 700;
+  margin-right: 5px;
+}
+
+.profile-follow-statistic-title {
+  color: #71767B;
+  font-size: 14px;
 }
