@@ -13,7 +13,7 @@ function ProfileHeader(props) {
           Zaki Raihan
         </p>
         <p className="profile-header-tab-desc">
-          {props.dataCount || "1"} {props.selectedTab}
+          {props.dataCount} {props.activeTab}
         </p>
       </div>
     </div>

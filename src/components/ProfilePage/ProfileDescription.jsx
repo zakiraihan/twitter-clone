@@ -145,12 +145,12 @@ function ProfileDescription(props) {
 
         <div className="profile-follow-statistic">
           <div>
-            <p class="profile-follow-statistic-count">97</p>
-            <p class="profile-follow-statistic-title">Following</p>
+            <p className="profile-follow-statistic-count">97</p>
+            <p className="profile-follow-statistic-title">Following</p>
           </div>
           <div>
-            <p class="profile-follow-statistic-count">49</p>
-            <p class="profile-follow-statistic-title">Followers</p>
+            <p className="profile-follow-statistic-count">49</p>
+            <p className="profile-follow-statistic-title">Followers</p>
           </div>
         </div>
       </div>
