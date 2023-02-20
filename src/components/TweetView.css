@@ -13,7 +13,6 @@
   flex-direction: column;
   width: 100%;
   padding-top: 12px;
-  /* background-color: yellow; */
 }
 
 .tweet-view-user {
@@ -25,7 +24,7 @@
 .tweet-view-user .full-name {
   font-size: 14px;
   font-weight: bold;
-  color: #E7E9EA;
+  color: var(--white);
 
   margin-bottom: 3px;
   margin-right: 8px;
@@ -33,7 +32,7 @@
 
 .tweet-view-user .username {
   font-size: 14px;
-  color: gray;
+  color: var(--gray);
   cursor: pointer;
 }
 
@@ -42,7 +41,7 @@
 }
 
 .tweet-view-text {
-  color: #E7E9EA;
+  color: var(--white);
   white-space: pre-line;
 }
 
@@ -53,21 +52,87 @@
   align-items: center;
   justify-content: space-between;
   position: relative;
-  padding-right: 100px;
+  padding-right: 50px;
 }
 
-.tweet-view-statistic > img {
-  margin-right: 5px;
-  width: 20px;
+.tweet-view-statistic .reply-icon,
+.tweet-view-statistic .retweet-icon,
+.tweet-view-statistic .like-icon,
+.tweet-view-statistic .share-icon {
+  fill: var(--gray);
+  width: 18px;
+}
+
+.tweet-view-statistic-icon-container {
+  color: var(--gray);
+  font-size: 12px;
+  display: flex;
+  align-items: center;
   cursor: pointer;
 }
 
-.tweet-view-statistic > img > svg {
-  fill: "#FFF";
+.reply-icon-container,
+.retweet-icon-container,
+.like-icon-container,
+.share-icon-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 35px;
+  height: 35px;
+  margin-right: 2px;
+  border-radius: 18px;
+}
+
+.tweet-view-statistic-icon-container:hover .reply-icon-container {
+  background-color: #0A171F;
+}
+
+.tweet-view-statistic-icon-container:hover .reply-icon {
+  fill: var(--blue);
+}
+
+.tweet-view-statistic-icon-container:hover .reply-icon-text {
+  color: var(--blue);
+}
+
+.tweet-view-statistic-icon-container:hover .retweet-icon-container {
+  background-color: #071A14;
+}
+
+.tweet-view-statistic-icon-container:hover .retweet-icon {
+  fill: var(--green);
+}
+
+.tweet-view-statistic-icon-container:hover .retweet-icon-text {
+  color: var(--green);
+}
+
+.tweet-view-statistic-icon-container:hover .like-icon-container {
+  background-color: #200914;
+}
+
+.tweet-view-statistic-icon-container:hover .like-icon {
+  fill: var(--pink);
+}
+
+.tweet-view-statistic-icon-container:hover .like-icon-text {
+  color: var(--pink);
+}
+
+.tweet-view-statistic-icon-container:hover .share-icon-container {
+  background-color: #0A171F;
+}
+
+.tweet-view-statistic-icon-container:hover .share-icon {
+  fill: var(--blue);
 }
 
 .tweet-view-one-image {
   max-width: 100%;
   margin-block: 10px;
   border-radius: 10px;
+
+  cursor: pointer;
 }
+

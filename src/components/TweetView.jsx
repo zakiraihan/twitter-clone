@@ -5,30 +5,71 @@ import { LikeIcon, ReplyIcon, RetweetIcon, ShareIcon } from "../assets/icons/twe
 import TweetContainer from "./TweetContainer";
 
 export default function TweetView(props) {
+  const {
+    profilePict,
+    fullName,
+    username,
+    date,
+    text,
+    images,
+    statistic
+  } = props.tweet;
+
+  function statisticNumberFormattor(statisticNumber) {
+    if (statisticNumber / 10000 >= 1) return `${(statisticNumber / 1000).toFixed(1)}K`;
+
+    return statisticNumber;
+  }
+
   return (
     <TweetContainer
-      profilePict={props.tweet.profilePict}
+      profilePict={profilePict}
     >
       <div className="tweet-view-container">
         <div className="tweet-view-area">
           <div className="tweet-view-user">
-            <p className="full-name">{props.tweet.fullName}</p>
-            <p className="username">{props.tweet.username} &#183; {props.tweet.date}</p>
+            <p className="full-name">{fullName}</p>
+            <p className="username">{username} &#183; {date}</p>
           </div>
           { props.tweet.text &&
             <div className="tweet-view-text">
-              {props.tweet.text}
+              {text}
             </div>
           }
-          { props.tweet.images && props.tweet.images.length === 1 &&
-            <img className="tweet-view-one-image" src={props.tweet.images[0]} alt="Tweets"/>
+          { images && images.length === 1 &&
+            <img className="tweet-view-one-image" src={images[0]} alt="Tweets"/>
           }
         </div>
         <div className="tweet-view-statistic">
-          <img src={ReplyIcon} alt="Reply"/>
-          <img src={RetweetIcon} alt="Retweet"/>
-          <img src={LikeIcon} alt="Like"/>
-          <img src={ShareIcon}  alt="Share"/>
+          <div className="tweet-view-statistic-icon-container">
+            <div className="reply-icon-container">
+              <ReplyIcon className="reply-icon"/>
+            </div>
+            { statistic.replies > 0 &&
+              <p className="reply-icon-text">{ statisticNumberFormattor(statistic.replies) }</p>
+            }
+          </div>
+          <div className="tweet-view-statistic-icon-container">
+            <div className="retweet-icon-container">
+              <RetweetIcon className="retweet-icon"/>
+            </div>
+            { statistic.retweets > 0 &&
+              <p className="retweet-icon-text">{ statisticNumberFormattor(statistic.retweets) }</p>
+            }
+          </div>
+          <div className="tweet-view-statistic-icon-container">
+            <div className="like-icon-container">
+              <LikeIcon className="like-icon"/>
+            </div>
+            { statistic.likes > 0 &&
+              <p className="like-icon-text">{ statisticNumberFormattor(statistic.likes) }</p>
+            }
+          </div>
+          <div className="tweet-view-statistic-icon-container">
+            <div className="share-icon-container">
+              <ShareIcon className="share-icon"/>
+            </div>
+          </div>
         </div>
       </div>
     </TweetContainer>

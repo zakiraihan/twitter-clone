@@ -19,6 +19,7 @@ const translate = async (text, from = "id", to = "en") => {
   );
 
   const data = await res.json();
+  
   if (res.ok) {
     return ({
       isError: false,
@@ -27,6 +28,8 @@ const translate = async (text, from = "id", to = "en") => {
     })
   }
   
+  console.log(data.error);
+
   return ({
     isError: true,
     error: data.error
