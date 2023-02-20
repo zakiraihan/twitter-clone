@@ -17,3 +17,8 @@ p, h2 {
   margin: 0;
   padding: 0;
 }
+
+:root {
+  --white: #E7E9EA;
+  --gray: #71767B;
+}

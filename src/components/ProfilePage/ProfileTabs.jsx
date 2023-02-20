@@ -5,35 +5,53 @@ import { memo, useEffect } from "react";
 import Loading from "../Loading";
 import TweetView from "../TweetView";
 import { homeTweet } from "../../mockData/homeTweet";
+import { tabTypes } from "../../views/Profile";
+import { useCallback } from "react";
 import { useState } from "react";
 
-let ProfileTabs = (props) => {
+let ProfileTabs = ({
+  onUpdateTabDataCounts,
+  onChangeTab,
+  currentActiveTab
+}) => {
+  
+  // #region States
   const [tweets, setTweets] = useState({
-    countFetch: 0,
+    countFetch: -1,
     isLoading: false,
     items: []
   });
   const [tweetAndReplies, setTweetAndReplies] = useState({
-    countFetch: 0,
+    countFetch: -1,
     isLoading: false,
     items: []
   });
   const [media, setMedia] = useState({
-    countFetch: 0,
+    countFetch: -1,
     isLoading: false,
     items: []
   });
   const [likes, setLikes] = useState({
-    countFetch: 0,
+    countFetch: -1,
     isLoading: false,
     items: []
   })
+  // #endregion
 
+  // #region Function or hooks
   function onClickTab(tabTypeKey) {
-    props.onChangeTab(tabTypeKey);
+    onChangeTab(tabTypeKey);
   }
 
-  // Use effect on initial;
+  const fetchTweets = useCallback((tabType) => {
+    // const URL = `http://backend.com/tweets?tab=${tabType}`;
+    // console.log(tabType)
+    // Implement fetch function here
+    return homeTweet;
+  }, [])
+  // #endregion
+
+  // #region useEffect
   useEffect(() => {
     if (
       !tweets.isLoading &&
@@ -46,26 +64,26 @@ let ProfileTabs = (props) => {
         tweetAndReplies: tabTypeTweetAndReplies, 
         media: tabTypeMedia, 
         likes: tabTypeLikes
-      } = props.tabTypes;
-      if (props.currentActiveTab === tabTypeTweet) {
+      } = tabTypes;
+      if (currentActiveTab === tabTypeTweet) {
         setTweets(prevState => ({
           ...prevState,
           countFetch: prevState.countFetch + 1,
           isLoading: true
         }));
-      } else if (props.currentActiveTab === tabTypeTweetAndReplies) {
+      } else if (currentActiveTab === tabTypeTweetAndReplies) {
         setTweetAndReplies(prevState => ({
           ...prevState,
           countFetch: prevState.countFetch + 1,
           isLoading: true
         }));
-      } else if (props.currentActiveTab === tabTypeMedia) {
+      } else if (currentActiveTab === tabTypeMedia) {
         setMedia(prevState => ({
           ...prevState,
           countFetch: prevState.countFetch + 1,
           isLoading: true
         }));
-      } else if (props.currentActiveTab === tabTypeLikes) {
+      } else if (currentActiveTab === tabTypeLikes) {
         setLikes(prevState => ({
           ...prevState,
           countFetch: prevState.countFetch + 1,
@@ -74,24 +92,29 @@ let ProfileTabs = (props) => {
       } 
     }
     return () => {};
-  }, [props.currentActiveTab, props.tabTypes]);
+  }, [currentActiveTab]); // eslint-disable-line react-hooks/exhaustive-deps
   
   useEffect(() => {
-    if (tweets.countFetch > 0) {
-      setTweets(prevState => ({
-        ...prevState,
-        isLoading: false,
-        items:[
-          ...prevState.items,
-          ...homeTweet
-        ]
-      }))
-      console.log("here");
+    if (tweets.countFetch >= 0) {
+      let fetchedTweet = [];
+      setTimeout(() => {
+        fetchedTweet = fetchTweets(tabTypes.tweets);
+        setTweets(prevState => {
+          return {
+            ...prevState,
+            isLoading: false,
+            items:[
+              ...prevState.items,
+              ...fetchedTweet 
+            ]
+          }
+        })
+      }, 2000);
     }
-  }, [tweets.countFetch]);
+  }, [tweets.countFetch, fetchTweets]);
 
   useEffect(() => {
-    if (tweetAndReplies.countFetch > 0) {
+    if (tweetAndReplies.countFetch >= 0) {
       setTweetAndReplies(prevState => ({
         ...prevState,
         isLoading: false,
@@ -99,23 +122,48 @@ let ProfileTabs = (props) => {
           ...prevState.items,
         ]
       }))
-      console.log("here");
     }
   }, [tweetAndReplies.countFetch]);
 
   useEffect(() => {
-    props.onUpdateTabDataCounts(props.tabTypes.tweets, tweets.items.length)
-  }, [tweets.items, props])
+    if (media.countFetch >= 0) {
+      setMedia(prevState => ({
+        ...prevState,
+        isLoading: false,
+        items:[
+          ...prevState.items,
+        ]
+      }))
+    }
+  }, [media.countFetch]);
 
+  useEffect(() => {
+    if (likes.countFetch >= 0) {
+      setLikes(prevState => ({
+        ...prevState,
+        isLoading: false,
+        items:[
+          ...prevState.items,
+        ]
+      }))
+    }
+  }, [likes.countFetch]);
+
+  useEffect(() => {
+    onUpdateTabDataCounts(tabTypes.tweets, tweets.items.length)
+  }, [tweets.items, onUpdateTabDataCounts])
+  // #endregion
+  
+  // #region Render tab content
   const TabContent = () => {
-    switch (props.currentActiveTab) {
-      case props.tabTypes.tweets:
+    switch (currentActiveTab) {
+      case tabTypes.tweets:
         return renderContent(tweets);
-      case props.tabTypes.tweetAndReplies:
+      case tabTypes.tweetAndReplies:
         return renderContent(tweetAndReplies);
-      case props.tabTypes.media:
+      case tabTypes.media:
         return renderContent(media);
-      case props.tabTypes.likes:
+      case tabTypes.likes:
         return renderContent(likes);
       default:
         return;
@@ -123,47 +171,82 @@ let ProfileTabs = (props) => {
   }
 
   function renderContent(activeTab) {
-    if (activeTab.isLoading) {
-      return (
-        <div style={{width: "100%", display: "flex", justifyContent: "center", marginTop: "20px"}}>
-          <Loading size={40}/>
-        </div>
-      )
-    }
-    else if (activeTab.items.length === 0) {
-
-    }
-    else {
-      return activeTab.items.map((item, index) => (
-        <TweetView 
-          key={index}
-          tweet={item}
-        />
-      ))
-    }
+    return (
+      <>
+        {activeTab.items.map((item, index) => (
+          <TweetView 
+            key={index}
+            tweet={item}
+          />
+        ))}
+        {!activeTab.isLoading && activeTab.items.length === 0 && 
+          <EmptyTab />
+        }
+        {activeTab.isLoading &&
+          <div style={{width: "100%", display: "flex", justifyContent: "center", marginBlock: "20px"}}>
+            <Loading size={40}/>
+          </div>
+        }
+      </>
+    )
   }
+
+  function EmptyTab() {
+    let content;
+    if (currentActiveTab === tabTypes.media) {
+      content = {
+        image: require("../../assets/images/profile-no-media.png"),
+        title: "Lights, camera … attachments!",
+        description: "When you send Tweets with photos or videos in them, they will show up here."
+      }
+    }
+    else if (currentActiveTab === tabTypes.likes) {
+      content = {
+        title: "You don’t have any likes yet",
+        description: "Tap the heart on any Tweet to show it some love. When you do, it’ll show up here."
+      }
+    }
+    
+    if (!content) return null;
+
+    return (
+      <div className="profile-empty-tab-container">
+        <div className="profile-empty-tab-inner-container">
+          {content?.image &&
+            <img
+              src={content?.image}
+              alt="empty tab"
+            />
+          }
+          <div className="profile-empty-tab-title">
+            {content?.title}
+          </div>
+          <div className="profile-empty-tab-description">
+            {content?.description}
+          </div>
+        </div>
+      </div>
+    )
+  } 
+  // #endregion
 
   return (
     <div className="profile-tabs-container">
       <div className="profile-tabs-item-container">
-        {Object.keys(props.tabTypes).map((key, index) => (
+        {Object.keys(tabTypes).map((key, index) => (
           <div 
             key={index} 
             className="profile-tabs-item" 
             onClick={() => onClickTab(key)}
             style={
-              props.currentActiveTab === props.tabTypes[key] ?
-              {
-                color: "#E7E9EA",
-              } : null
+              currentActiveTab === tabTypes[key] ?
+              { color: "#E7E9EA" } : null
             }
           >
             <div className="profile-tabs-item-text"> 
-              { props.tabTypes[key] }
-              { props.currentActiveTab === props.tabTypes[key] &&
-                <div className="profile-tabs-item-underline">
-
-                </div>
+              { tabTypes[key] }
+              { currentActiveTab === tabTypes[key] &&
+                <div className="profile-tabs-item-underline"/>
               }
             </div>
           </div>

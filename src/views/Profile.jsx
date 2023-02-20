@@ -3,9 +3,10 @@ import "./Profile.css";
 import { ProfileDescription, ProfileHeader, ProfileTabs } from "../components/ProfilePage";
 
 import { TrendingSection } from "../components";
+import { useCallback } from "react";
 import { useState } from "react";
 
-const tabTypes = {
+export const tabTypes = {
   tweets: "Tweets",
   tweetAndReplies: "Tweets & replies",
   media: "Media",
@@ -25,14 +26,14 @@ function ProfilePage(props) {
     setActiveTab(tabTypes[tabTypeKey]);
   }
 
-  function onUpdateTabDataCounts(tabTypeKey, count) {
+  const onUpdateTabDataCounts = useCallback((tabTypeKey, count) => {
     setTabDataCounts(prevState => (
       {
         ...prevState,
         [tabTypeKey]: count
       }
     ))
-  }
+  }, [])
 
   return (
     <div className="page-container">
