@@ -10,7 +10,7 @@ export default function TweetContainer(props) {
         <div className="tweet-profile-pict">
           <img
             src={props.profilePict}
-            alt="User profile picture"
+            alt="User profile"
           />
         </div>
         

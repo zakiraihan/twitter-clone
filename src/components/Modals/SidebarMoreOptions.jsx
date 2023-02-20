@@ -5,19 +5,15 @@ import {
   AnalyticsIcon,
   DisplayIcon,
   HelpIcon,
-  HomeFillIcon,
-  HomeIcon,
   MonetizationIcon,
   ProfessionalsIcon,
   SettingsIcon,
   ShortcutIcon,
-  TopicsFillIcon,
   TopicsIcon,
   TwitterBlueIcon,
   TwitterCircleIcon
 } from "../../assets/icons/menu";
 import { ArrowBottomIcon, ArrowUpIcon } from "../../assets/icons/common";
-import React, { useEffect } from 'react'
 
 import SidebarNav from "../Sidebar/SidebarNav";
 import { useState } from "react";
@@ -132,11 +128,10 @@ function SidebarMoreOptions({ style }) {
         ))}
         <div className="sidebar-more-option-separator"></div>
         {dropDownItems.map((item, index) => (
-          <>
+          <div style={{width: "100%"}} key={ item.title }>
             <div 
               className="sidebar-more-option-dropdown"
               onClick={() => onClickDropdown(item)}
-              key={ item.title }
             >
               <p>{ item.title }</p>
               <img
@@ -163,7 +158,7 @@ function SidebarMoreOptions({ style }) {
                 </div>
               )))
             }
-          </>
+          </div>
         ))}
       </div>
     </div>

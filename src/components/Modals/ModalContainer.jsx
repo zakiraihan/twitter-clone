@@ -1,6 +1,5 @@
 import "./ModalContainer.css";
 
-import React, { useEffect } from 'react'
 import { closeModal, getModalState } from "../../slices/modalSlice";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -53,6 +52,8 @@ function ModalContainer(props) {
             {...modalState.props} 
           />
         );
+      default:
+        return;
     }
   }
   

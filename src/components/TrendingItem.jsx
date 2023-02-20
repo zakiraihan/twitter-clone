@@ -25,7 +25,7 @@ export default function TrendingItem(props) {
       <p className="trending-word">{props.item.word}</p>
       {props.item.tweetCount && <p className="trending-tweet-count">{props.item.tweetCount} Tweets</p>}
       <div className="trending-item-three-dots">
-        <img src={ThreeDotsIcon}/>
+        <img src={ThreeDotsIcon} alt="More"/>
         <div className="trending-item-more">
           More
         </div>

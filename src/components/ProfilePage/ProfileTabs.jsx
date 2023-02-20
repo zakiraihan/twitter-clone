@@ -41,25 +41,31 @@ let ProfileTabs = (props) => {
       !media.isLoading &&
       !likes.isLoading
     ) {
-      if (props.currentActiveTab === props.tabTypes.tweets) {
+      const {
+        tweets: tabTypeTweet, 
+        tweetAndReplies: tabTypeTweetAndReplies, 
+        media: tabTypeMedia, 
+        likes: tabTypeLikes
+      } = props.tabTypes;
+      if (props.currentActiveTab === tabTypeTweet) {
         setTweets(prevState => ({
           ...prevState,
           countFetch: prevState.countFetch + 1,
           isLoading: true
         }));
-      } else if (props.currentActiveTab === props.tabTypes.tweetAndReplies) {
+      } else if (props.currentActiveTab === tabTypeTweetAndReplies) {
         setTweetAndReplies(prevState => ({
           ...prevState,
           countFetch: prevState.countFetch + 1,
           isLoading: true
         }));
-      } else if (props.currentActiveTab === props.tabTypes.media) {
+      } else if (props.currentActiveTab === tabTypeMedia) {
         setMedia(prevState => ({
           ...prevState,
           countFetch: prevState.countFetch + 1,
           isLoading: true
         }));
-      } else if (props.currentActiveTab === props.tabTypes.likes) {
+      } else if (props.currentActiveTab === tabTypeLikes) {
         setLikes(prevState => ({
           ...prevState,
           countFetch: prevState.countFetch + 1,
@@ -68,7 +74,7 @@ let ProfileTabs = (props) => {
       } 
     }
     return () => {};
-  }, [props.currentActiveTab]);
+  }, [props.currentActiveTab, props.tabTypes]);
   
   useEffect(() => {
     if (tweets.countFetch > 0) {
@@ -99,7 +105,7 @@ let ProfileTabs = (props) => {
 
   useEffect(() => {
     props.onUpdateTabDataCounts(props.tabTypes.tweets, tweets.items.length)
-  }, [tweets.items])
+  }, [tweets.items, props])
 
   const TabContent = () => {
     switch (props.currentActiveTab) {
@@ -111,6 +117,8 @@ let ProfileTabs = (props) => {
         return renderContent(media);
       case props.tabTypes.likes:
         return renderContent(likes);
+      default:
+        return;
     };
   }
 

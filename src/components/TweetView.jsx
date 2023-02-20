@@ -21,14 +21,14 @@ export default function TweetView(props) {
             </div>
           }
           { props.tweet.images && props.tweet.images.length === 1 &&
-            <img className="tweet-view-one-image" src={props.tweet.images[0]}/>
+            <img className="tweet-view-one-image" src={props.tweet.images[0]} alt="Tweets"/>
           }
         </div>
         <div className="tweet-view-statistic">
-          <img src={ReplyIcon}/>
-          <img src={RetweetIcon}/>
-          <img src={LikeIcon}/>
-          <img src={ShareIcon}/>
+          <img src={ReplyIcon} alt="Reply"/>
+          <img src={RetweetIcon} alt="Retweet"/>
+          <img src={LikeIcon} alt="Like"/>
+          <img src={ShareIcon}  alt="Share"/>
         </div>
       </div>
     </TweetContainer>

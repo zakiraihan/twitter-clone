@@ -74,10 +74,10 @@ export default function TweetPost(props) {
           </div>
         }
         <div className="tweet-post-setting">
-          <img src={PhotoIcon}/>
-          <img src={GifIcon}/>
-          <img src={PollIcon}/>
-          <img src={EmojiIcon}/>
+          <img src={PhotoIcon} alt="icon"/>
+          <img src={GifIcon} alt="icon"/>
+          <img src={PollIcon} alt="icon"/>
+          <img src={EmojiIcon} alt="icon"/>
           <div className="tweet-post-setting-right">
             {tweetVal.length > 0 &&
               <div style={adjustTweetProgressSize()}>

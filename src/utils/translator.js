@@ -19,7 +19,6 @@ const translate = async (text, from = "id", to = "en") => {
   );
 
   const data = await res.json();
-  console.log("here");
   if (res.ok) {
     return ({
       isError: false,

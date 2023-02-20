@@ -37,6 +37,7 @@ export default function Sidebar(props) {
           <img 
             className="sidebar-tweet-logo"
             src={TwitterIcon}
+            alt="Twitter"
           />
 
           <nav className="sidebar-nav">
@@ -60,7 +61,7 @@ export default function Sidebar(props) {
             <div className="sidebar-profile-pict">
               <img
                 src={ profilePicture }
-                alt="User profile picture"
+                alt="User profile"
               />
             </div>
             <div className="sidebar-profile-user">

@@ -51,7 +51,7 @@ export default function SidebarNav(props) {
         window.removeEventListener("resize", getPosition);
       }
     })
-  }, []);
+  }, [props.navItem.text]);
 
   return (
     <>

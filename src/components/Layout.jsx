@@ -1,4 +1,3 @@
-import { HomePage } from '../views'
 import MainContainer from './MainContainer'
 import MessageBar from './MessageBar/MessageBar'
 import ModalContainer from './Modals/ModalContainer'

@@ -9,7 +9,7 @@ import { homeTweet } from "../mockData/homeTweet";
 export default function HomePage(props) {
   const [activeTab, setActiveTab] = useState(1);
   const [followingTweets, setFollowingTweets] = useState([]);
-  const [forYouTweets, setForYouTweets] = useState([]);
+  // const [forYouTweets, setForYouTweets] = useState([]);
   
   useEffect(() => {
     setFollowingTweets(homeTweet);

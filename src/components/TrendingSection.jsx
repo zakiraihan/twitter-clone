@@ -31,6 +31,7 @@ export default function TrendingSection(props) {
               <div className="trending-searchbar">
                 <img
                   src={SearchIcon}
+                  alt="Search"
                 />
                 <input
                   placeholder="Search Twitter"
@@ -64,7 +65,7 @@ export default function TrendingSection(props) {
             <p>Ads info</p>
             <p>More </p> 
             <div className="trending-item-three-dots">
-              <img src={ThreeDotsIcon}/>
+              <img src={ThreeDotsIcon} alt="More"/>
             </div>
           </div>
           <div className="trending-footer-row">

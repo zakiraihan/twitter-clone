@@ -11,17 +11,15 @@ function App() {
   const location = useLocation();
 
   useEffect(() => {
-    if (location.pathname === "/") {
-      navigate("/home");
-    };
-  }, [])
-
-  useEffect(() => {
     const defaultTitle = "Twitter";
     const titleFromRoute = getRouteTitle(location);
     document.title = titleFromRoute === defaultTitle ? 
       defaultTitle : titleFromRoute + ` / ${defaultTitle}`;
-  }, [location])
+
+    if (location.pathname === "/") {
+      navigate("/home");
+    };
+  }, [location, navigate])
 
   return (
     <Routes>

@@ -1,12 +1,12 @@
 import "./ProfileDescription.css";
 
 import { CalendarIcon, MapMarkerIcon, MicrosoftAzureIcon } from "../../assets/icons/common";
-import { closeModal, showModal } from "../../slices/modalSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 import Loading from "../Loading";
 import { capitalizeFirstLetter } from "../../utils/stringFormattor";
 import { getUser } from "../../slices/userSlice";
+import { showModal } from "../../slices/modalSlice";
 import { translate } from "../../utils/translator";
 import { useEffect } from "react";
 import { useState } from "react";
@@ -65,21 +65,21 @@ function ProfileDescription(props) {
         }
       })
     }
-  }, [isLoadingTranslateBio])
+  }, [isLoadingTranslateBio, bio, translatedBio])
 
   useEffect(() => {
     if (translatedBio && isLoadingTranslateBio) {
       setIsLoadingTranslateBio(false);
       setIsShowTranslatedBio(true);
     }
-  }, [translatedBio])
+  }, [translatedBio, isLoadingTranslateBio])
 
   return (
     <div className="profile-description-container">
       <div className="profile-header-photo">
         <img 
           src={ headerPhoto } 
-          alt="User Header Photo"
+          alt="User Header"
           onClick={onClickHeaderPhoto}
         />
       </div>
@@ -87,7 +87,7 @@ function ProfileDescription(props) {
         <div className="profile-photo">
           <img 
             src={ photo } 
-            alt="user profile photo"
+            alt="user profile"
             onClick={onClickPhoto}
           />
           <div className="profile-photo-hover-handler">

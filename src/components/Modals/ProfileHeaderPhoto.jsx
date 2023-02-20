@@ -7,7 +7,7 @@ function ProfileHeaderPhoto({ headerPhoto, closeModalMethod }) {
     <div className="modal-profile-header-photo-container" onClick={closeModalMethod}>
       <CloseButton onClick={closeModalMethod}/>
       <div className="modal-profile-header-photo" onClick={(event) => event.stopPropagation()}>
-        <img src={ headerPhoto } alt="user header photo"/>
+        <img src={ headerPhoto } alt="user header"/>
       </div>
     </div>
   )
