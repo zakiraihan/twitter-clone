@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   modal: {
-    type: "none", // check on ../enum/modalType.js
+    type: "none", // check on ../enum/modalEnum.js
     style: {
       top: 0,
       bottom: 0,

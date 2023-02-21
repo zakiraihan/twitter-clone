@@ -1,4 +1,4 @@
-export const modalType = {
+export const modalEnum = {
   none: "none",
   sidebarMoreOption: "SidebarMoreOption",
   profileHeaderPhoto: "ProfileHeaderPhoto",

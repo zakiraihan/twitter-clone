@@ -1,3 +1,4 @@
+import { activityEnum } from "../enum/activityEnum";
 import { v4 as uuidv4 } from "uuid";
 
 export const homeTweet = [
@@ -73,7 +74,7 @@ export const homeTweet = [
       views: 0
     },
     activity: {
-      type: "retweeted",
+      type: activityEnum.retweeted,
       by: "You"
     } 
   },

@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import ProfileHeaderPhoto from "./ProfileHeaderPhoto";
 import ProfilePhoto from "./ProfilePhoto";
 import SidebarMoreOptions from "./SidebarMoreOptions";
-import { modalType } from "../../enum/modalType";
+import { modalEnum } from "../../enum/modalEnum";
 
 function ModalContainer(props) {
   const dispatch = useDispatch();
@@ -28,7 +28,7 @@ function ModalContainer(props) {
 
   function ModalSelector() {
     switch(modalState.type){
-      case modalType.sidebarMoreOption:
+      case modalEnum.sidebarMoreOption:
         return (
           <SidebarMoreOptions 
             style={modalState.style}
@@ -36,7 +36,7 @@ function ModalContainer(props) {
             {...modalState.props} 
           />
         );
-      case modalType.profileHeaderPhoto:
+      case modalEnum.profileHeaderPhoto:
         return (
           <ProfileHeaderPhoto 
             style={modalState.style}
@@ -44,7 +44,7 @@ function ModalContainer(props) {
             {...modalState.props} 
           />
         );
-      case modalType.profilePhoto:
+      case modalEnum.profilePhoto:
         return (
           <ProfilePhoto 
             style={modalState.style}

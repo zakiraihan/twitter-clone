@@ -1,6 +1,8 @@
 import "./TweetContainer.css";
 
-import { RetweetIcon } from "../assets/icons/tweet";
+import { LikeIcon, ReplyIcon, RetweetIcon } from "../assets/icons/tweet";
+
+import { activityEnum } from "../enum/activityEnum";
 
 export default function TweetContainer({ 
   children, 
@@ -27,15 +29,34 @@ export default function TweetContainer({
     return baseClass;
   }
 
+  const Activities = () => {
+    return (
+      <div className="tweet-activity-container">
+        <div className="tweet-left-side-container tweet-activity">
+          {
+            (
+              activity.type === activityEnum.retweeted && 
+              <RetweetIcon className="tweet-activity-icon"/>
+            ) ||
+            (
+              activity.type === activityEnum.replied && 
+              <ReplyIcon className="tweet-activity-icon"/>
+            ) ||
+            (
+              activity.type === activityEnum.liked && 
+              <LikeIcon className="tweet-activity-icon"/>
+            )
+          }
+        </div>
+        {activity && `${activity.by} ${activity.type}`}
+      </div>
+    )
+  }
+
   return (
     <div className={containerClass()} style={tweetContainerStyle} onClick={onClickBackground}>
       {activity &&
-        <div className="tweet-activity-container">
-          <div className="tweet-left-side-container" style={{ display: "flex", justifyContent: "flex-end", paddingRight: "15px" }}>
-            <RetweetIcon className="tweet-activity-icon"/>
-          </div>
-          {activity && `${activity.by} retweeted`}
-        </div>
+        <Activities />
       }
       <div className="tweet-inner-container">
         {showProfilePict &&
