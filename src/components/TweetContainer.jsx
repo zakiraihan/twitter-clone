@@ -3,21 +3,34 @@ import "./TweetContainer.css";
 import { LikeIcon, ReplyIcon, RetweetIcon } from "../assets/icons/tweet";
 
 import { activityEnum } from "../enum/activityEnum";
+import { useEffect } from "react";
+import { useRef } from "react";
+import { useState } from "react";
 
 export default function TweetContainer({ 
   children, 
   marginTop, 
   profilePict, 
   activity,
+  hasThreadReply,
   showBottomBorder = true,
   showProfilePict = true,
   backgroundClickAble = false,
   onClickBackground = () => {} 
 }) {
+  const profilePictureRef = useRef(null);
+  const [componentHeight, setComponentHeight] = useState("100%");
+
+  useEffect(() => {
+    setComponentHeight(profilePictureRef?.current?.clientHeight);
+
+    console.log(profilePictureRef?.current?.clientHeight)
+  }, [profilePictureRef])
+
   const tweetContainerStyle = {
     marginTop: marginTop || "0px",
     paddingTop: activity ? "5px" : "10.5px",
-    borderBottom: showBottomBorder ? "var(--borderStyles)" : "none",
+    borderBottom: showBottomBorder && !hasThreadReply ? "var(--borderStyles)" : "none",
     cursor: backgroundClickAble ? "pointer" : "default"
   }
 
@@ -60,12 +73,20 @@ export default function TweetContainer({
       }
       <div className="tweet-inner-container">
         {showProfilePict &&
-          <div className="tweet-left-side-container">
+          <div className="tweet-left-side-container" ref={profilePictureRef}>
             <img
               className="tweet-left-side-profile"
               src={profilePict}
               alt="User profile"
             />
+            {hasThreadReply &&
+              <div
+                className="tweet-thread-reply-line"
+                style={{
+                  height: componentHeight
+                }}
+              />
+            }
           </div>
         }
         

@@ -37,7 +37,21 @@ export const homeTweet = [
           likes: 120,
           views: 0
         }
-      }
+      },
+      // {
+      //   id: uuidv4().toString(),
+      //   profilePict: "https://pbs.twimg.com/profile_images/1609826136086970374/1fbDJOaX_400x400.jpg",
+      //   fullName: "Salary Survey 3.0 24 Jan - 21 Feb Cek Pinned Tweet",
+      //   username: "@hrdbacot",
+      //   date: "Feb 20, 2023",
+      //   text: "Tp emg Manggarai butut banget.",
+      //   statistic: {
+      //     replies: 0,
+      //     retweets: 20,
+      //     likes: 120,
+      //     views: 0
+      //   }
+      // }
     ]
   },
   {
