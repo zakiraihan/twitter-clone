@@ -1,20 +1,40 @@
 import "./TweetContainer.css";
 
-export default function TweetContainer(props) {
+export default function TweetContainer({ 
+  children, 
+  marginTop, 
+  profilePict, 
+  showBottomBorder = true,
+  showProfilePict = true,
+  backgroundClickAble = false,
+  onClickBackground = () => {} 
+}) {
   const tweetContainerStyle = {
-    marginTop: props.marginTop || "0px"
+    marginTop: marginTop || "0px",
+    borderBottom: showBottomBorder ? "var(--borderStyles)" : "none",
+    cursor: backgroundClickAble ? "pointer" : "default"
+  }
+
+  const containerClass = () => {
+    const baseClass = "tweet-container";
+
+    if (backgroundClickAble) return baseClass + " tweet-container-clickable";
+    
+    return baseClass;
   }
 
   return (
-    <div className="tweet-container" style={tweetContainerStyle}>
+    <div className={containerClass()} style={tweetContainerStyle} onClick={onClickBackground}>
+      {showProfilePict &&
         <div className="tweet-profile-pict">
           <img
-            src={props.profilePict}
+            src={profilePict}
             alt="User profile"
           />
         </div>
-        
-        { props.children }
-      </div>
+      }
+      
+      { children }
+    </div>
   )
 }

@@ -6,6 +6,14 @@
   align-items: baseline;
   padding-right: 20px;
 }
+.tweet-quote-container {
+  margin-top: 15px;
+  width: 100%;
+
+  border: var(--borderStyles);
+  border-radius: 15px;
+  padding-inline: 12px;
+}
 
 .tweet-view-area {
   flex: 1;
@@ -16,17 +24,22 @@
 }
 
 .tweet-view-user {
-  flex: 1;
   display: flex;
-  margin-bottom: 3px;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.tweet-view-user > img {
+  width: 20px;
+  margin-right: 5px;
+  vertical-align:bottom; 
+  border-radius: 10px;
 }
 
 .tweet-view-user .full-name {
   font-size: 14px;
   font-weight: bold;
   color: var(--white);
-
-  margin-bottom: 3px;
   margin-right: 8px;
 }
 
@@ -34,15 +47,17 @@
   font-size: 14px;
   color: var(--gray);
   cursor: pointer;
+  display: flex;
 }
 
 .tweet-view-user .username:hover {
-  text-decoration: underline;
+  /* text-decoration: underline; */
 }
 
 .tweet-view-text {
   color: var(--white);
   white-space: pre-line;
+  font-size: 14.5px;
 }
 
 .tweet-view-statistic {
@@ -127,6 +142,7 @@
 .tweet-view-statistic-icon-container:hover .share-icon {
   fill: var(--blue);
 }
+
 
 .tweet-view-one-image {
   max-width: 100%;

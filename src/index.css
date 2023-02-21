@@ -24,4 +24,6 @@ p, h2 {
   --blue: #1D9BF0;
   --green: #00BA7C;
   --pink: #F91880;
+
+  --borderStyles: 1px solid #2F3336;
 }
