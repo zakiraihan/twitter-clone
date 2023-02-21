@@ -1,3 +1,4 @@
+import { ReactComponent as AnalyticsIcon } from "./analytics.svg";
 import EmojiIcon from "./emoji.svg";
 import GifIcon from "./gif.svg";
 import { ReactComponent as LikeIcon } from "./like.svg";
@@ -8,6 +9,7 @@ import { ReactComponent as RetweetIcon } from "./retweet.svg";
 import { ReactComponent as ShareIcon } from "./share.svg";
 
 export {
+  AnalyticsIcon,
   EmojiIcon,
   GifIcon,
   LikeIcon,

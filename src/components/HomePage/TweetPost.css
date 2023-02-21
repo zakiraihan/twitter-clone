@@ -17,7 +17,8 @@
 
 .tweet-audience {
   padding: 3px 12px;
-  margin-top: 10px;
+  /* margin-top: 10px; */
+  margin-bottom: 12px;
 
   border: 1px solid #536471;
   border-radius: 20px;
@@ -45,7 +46,7 @@
   color: #E7E9EA;
   font-size: 20px;
 
-  padding-top: 23px;
+  padding-top: 12.5px;
   padding-right: 20px;
 }
 

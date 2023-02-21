@@ -1,6 +1,6 @@
 import "./TweetView.css";
 
-import { LikeIcon, ReplyIcon, RetweetIcon, ShareIcon } from "../assets/icons/tweet";
+import { AnalyticsIcon, LikeIcon, ReplyIcon, RetweetIcon, ShareIcon } from "../assets/icons/tweet";
 
 import TweetContainer from "./TweetContainer";
 
@@ -17,7 +17,8 @@ export default function TweetView({
     text,
     images,
     statistic,
-    quoteTweet
+    quoteTweet,
+    activity,
   } = tweet;
 
   function statisticNumberFormattor(statisticNumber) {
@@ -38,6 +39,7 @@ export default function TweetView({
       showBottomBorder={showBottomBorder}
       showProfilePict={showLeftProfile}
       backgroundClickAble={true}
+      activity={activity}
     >
       <div className="tweet-view-container">
         <div className="tweet-view-area">
@@ -93,6 +95,14 @@ export default function TweetView({
               </div>
               { statistic.likes > 0 &&
                 <p className="like-icon-text">{ statisticNumberFormattor(statistic.likes) }</p>
+              }
+            </div>
+            <div className="tweet-view-statistic-icon-container">
+              <div className="reply-icon-container">
+                <AnalyticsIcon className="reply-icon"/>
+              </div>
+              { statistic.replies > 0 &&
+                <p className="reply-icon-text">{ statisticNumberFormattor(statistic.replies) }</p>
               }
             </div>
             <div className="tweet-view-statistic-icon-container">

@@ -11,7 +11,8 @@ export const homeTweet = [
     statistic: {
       replies: 20,
       retweets: 101,
-      likes: 136
+      likes: 136,
+      views: 13690
     },
     quoteTweet: {
       id: uuidv4().toString(),
@@ -32,7 +33,8 @@ export const homeTweet = [
         statistic: {
           replies: 0,
           retweets: 20,
-          likes: 20120
+          likes: 120,
+          views: 0
         }
       }
     ]
@@ -50,7 +52,8 @@ export const homeTweet = [
     statistic: {
       replies: 0,
       retweets: 20,
-      likes: 20120
+      likes: 20120,
+      views: 0
     }
   },
   {
@@ -66,8 +69,13 @@ export const homeTweet = [
     statistic: {
       replies: 3,
       retweets: 0,
-      likes: 0
-    }
+      likes: 0,
+      views: 0
+    },
+    activity: {
+      type: "retweeted",
+      by: "You"
+    } 
   },
   {
     id: uuidv4().toString(),
@@ -79,7 +87,8 @@ export const homeTweet = [
     statistic: {
       replies: 0,
       retweets: 0,
-      likes: 0
+      likes: 0,
+      views: 0
     }
   },
 ]

@@ -1,24 +1,45 @@
 .tweet-container {
   display: flex;
+  flex-direction: column;
   background-color: #000000;
+}
+
+.tweet-activity-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  color: var(--gray);
+  font-size: 13.5px;
+  font-weight: 500;
+
+  margin-bottom: 3px;
+}
+
+.tweet-activity-icon {
+  fill: var(--gray);
+  stroke: var(--gray);
+  width: 15px;
+}
+
+.tweet-inner-container {
+  display: flex;
 }
 
 .tweet-container-clickable:hover {
   background-color: #080808;
 }
 
-.tweet-profile-pict {
+.tweet-left-side-container {
   width: 78px;
   display: flex;
   align-items: baseline;
-
-  padding-top: 10.5px;
   padding-left: 15px;
 }
 
-.tweet-profile-pict > img {
+.tweet-left-side-profile {
   width: 50px;
   height: 50px;
   object-fit: cover;
   border-radius: 25px;
+  vertical-align: bottom;
 }
