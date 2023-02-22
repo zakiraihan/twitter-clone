@@ -6,6 +6,7 @@ import MainContainer from "./MainContainer";
 import MessageBar from "./MessageBar/MessageBar";
 import ModalContainer from "./Modals/ModalContainer";
 import Sidebar from "./Sidebar/Sidebar";
+import TimeAgo from "./TimeAgo";
 import TrendingSection from "./TrendingSection";
 import TweetButton from "./TweetButton";
 import TweetContainer from "./TweetContainer";
@@ -20,6 +21,7 @@ export {
   MessageBar,
   ModalContainer,
   Sidebar,
+  TimeAgo,
   TrendingSection,
   TweetButton,
   TweetContainer,

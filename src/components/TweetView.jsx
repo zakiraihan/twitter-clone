@@ -2,6 +2,7 @@ import "./TweetView.css";
 
 import { AnalyticsIcon, LikeIcon, ReplyIcon, RetweetIcon, ShareIcon } from "../assets/icons/tweet";
 
+import TimeAgo from "./TimeAgo";
 import TweetContainer from "./TweetContainer";
 
 export default function TweetView({
@@ -63,7 +64,7 @@ export default function TweetView({
                 />
               }
               <p className="full-name">{fullnameFormattor(fullName)}</p>
-              <p className="username">{username} &#183; {date}</p>
+              <p className="username">{username} &#183; <TimeAgo timestamp={date}/></p>
             </div>
             { text &&
               <div className="tweet-view-text">

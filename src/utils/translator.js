@@ -28,7 +28,6 @@ const translate = async (text, from = "id", to = "en") => {
     })
   }
   
-  console.log(data.error);
 
   return ({
     isError: true,

@@ -23,8 +23,6 @@ export default function TweetContainer({
 
   useEffect(() => {
     setComponentHeight(profilePictureRef?.current?.clientHeight);
-
-    console.log(profilePictureRef?.current?.clientHeight)
   }, [profilePictureRef])
 
   const tweetContainerStyle = {
