@@ -5,6 +5,7 @@ import Loading from "./Loading";
 import MainContainer from "./MainContainer";
 import MessageBar from "./MessageBar/MessageBar";
 import ModalContainer from "./Modals/ModalContainer";
+import MoreButton from "./MoreButton";
 import Sidebar from "./Sidebar/Sidebar";
 import TimeAgo from "./TimeAgo";
 import TrendingSection from "./TrendingSection";
@@ -20,6 +21,7 @@ export {
   MainContainer,
   MessageBar,
   ModalContainer,
+  MoreButton,
   Sidebar,
   TimeAgo,
   TrendingSection,

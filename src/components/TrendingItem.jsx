@@ -1,6 +1,6 @@
 import "./TrendingItem.css";
 
-import { ThreeDotsIcon } from "../assets/icons/common";
+import MoreButton from "./MoreButton";
 
 export default function TrendingItem(props) {
   const TrendingType = () => {
@@ -24,12 +24,7 @@ export default function TrendingItem(props) {
       <TrendingType />
       <p className="trending-word">{props.item.word}</p>
       {props.item.tweetCount && <p className="trending-tweet-count">{props.item.tweetCount} Tweets</p>}
-      <div className="trending-item-three-dots">
-        <img src={ThreeDotsIcon} alt="More"/>
-        <div className="trending-item-more">
-          More
-        </div>
-      </div>
+      <MoreButton />
     </div>
   )
 }

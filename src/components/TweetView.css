@@ -5,7 +5,16 @@
   flex-direction: column;
   align-items: baseline;
   padding-right: 20px;
+
+  position: relative;
 }
+
+.tweet-view-more-container {
+  position: absolute;
+  top: -10px;
+  right: 0;
+}
+
 .tweet-quote-container {
   margin-top: 15px;
   width: 100%;
@@ -98,6 +107,26 @@
   border-radius: 18px;
 }
 
+.tweet-view-statistic-icon-container:hover .statistic-icon-text {
+  opacity: 1;
+  z-index: 100;
+}
+
+.statistic-icon-text {
+  position: absolute;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 2px 3px;
+  color: var(--white);
+  background-color: #4f6070da;
+  border-radius: 2px;
+  
+  bottom: -17px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 1.5s;
+}
+
 .tweet-view-statistic-icon-container:hover .reply-icon-container {
   background-color: #0A171F;
 }
@@ -142,7 +171,6 @@
   fill: var(--blue);
 }
 
-
 .tweet-view-one-image {
   max-width: 100%;
   margin-block: 10px;
@@ -151,3 +179,41 @@
   cursor: pointer;
 }
 
+.tweet-view-multi-image-container {
+  width: 100%;
+  height: 300px;
+  margin-block: 10px;
+  border-radius: 10px;
+  overflow: hidden;
+  /* background-color: red; */
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2px;
+  color: var(--white);
+
+  cursor: default;
+}
+
+.tweet-view-multi-image-two-row {
+  grid-template-rows: repeat(2, 150px);
+}
+
+.tweet-view-right-column{
+  width: 100%;
+  display: grid;
+  grid-template-rows: repeat(2, 150px);
+  gap: 2px;
+}
+
+.tweet-view-two-image,
+.tweet-view-four-image {
+  width: 100%;
+  object-fit: cover;
+
+  cursor: pointer;
+}
+
+.tweet-view-four-image {
+  height: 100%;
+}

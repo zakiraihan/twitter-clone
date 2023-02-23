@@ -1,0 +1,45 @@
+.more-button-three-dots {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  top: 5px;
+  right: 10px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--white)
+}
+
+.more-button-three-dots:hover {
+  background-color: #1D2C37;
+}
+
+.more-button-three-dots-img {
+  width: 40%;
+  height: 40%;
+  fill: var(--gray);
+}
+
+.more-button-three-dots:hover .more-button-three-dots-img{
+  fill: var(--blue);
+}
+
+.more-button-more {
+  position: absolute;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 2px 3px;
+  background-color: #4F6070;
+  border-radius: 2px;
+  
+  bottom: -22px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 1.5s;
+}
+
+.more-button-three-dots:hover > .more-button-more {
+  opacity: 1;
+}

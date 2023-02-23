@@ -8,7 +8,7 @@ import GlobeIcon from "./globe.svg";
 import MapMarkerIcon from "./map-marker.svg";
 import MicrosoftAzureIcon from "./microsoft-azure.svg";
 import SearchIcon from "./search.svg";
-import ThreeDotsIcon from "./three-dots.svg";
+import { ReactComponent as ThreeDotsIcon } from "./three-dots.svg";
 
 export {
   ArrowBottomBlueIcon,

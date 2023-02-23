@@ -1,14 +1,19 @@
 import "./TweetView.css";
 
 import { AnalyticsIcon, LikeIcon, ReplyIcon, RetweetIcon, ShareIcon } from "../assets/icons/tweet";
+import { fullnameFormattor, statisticNumberFormattor } from "../utils/stringFormattor";
 
+import MoreButton from "./MoreButton";
 import TimeAgo from "./TimeAgo";
 import TweetContainer from "./TweetContainer";
+import { useRef } from "react";
+import { useState } from "react";
 
 export default function TweetView({
   tweet,
   showBottomBorder = true,
   showLeftProfile = true,
+  showMoreButton = true,
   hasThreadReply = false,
 }) {
   const {
@@ -24,16 +29,13 @@ export default function TweetView({
     threadReply,
   } = tweet;
 
-  function statisticNumberFormattor(statisticNumber) {
-    if (statisticNumber / 10000 >= 1) return `${(statisticNumber / 1000).toFixed(1)}K`;
+  const [showMoreOptions, setShowMoreOptions] = useState(false);
 
-    return statisticNumber;
-  }
+  const moreOptionRef = useRef(null);
 
-  function fullnameFormattor(fullName){
-    if (fullName.length > 39) return `${fullName.slice(0, 39)}...`;
-
-    return fullName;
+  function onClickMoreOption() {
+    const bottom = moreOptionRef.current.getBoundingClientRect().bottom;
+    alert(`Space to bottom: ${window.innerHeight - bottom}`);
   }
 
   const TweetsThreadReplies = () => threadReply.map((item, index) => (
@@ -55,6 +57,11 @@ export default function TweetView({
         activity={activity}
       >
         <div className="tweet-view-container">
+          { showMoreButton &&
+            <div className="tweet-view-more-container" ref={moreOptionRef}>
+              <MoreButton onClick={onClickMoreOption} />
+            </div>
+          }
           <div className="tweet-view-area">
             <div className="tweet-view-user">
               {!showLeftProfile &&
@@ -75,20 +82,54 @@ export default function TweetView({
               <div className="tweet-quote-container">
                 <TweetView
                   tweet={quoteTweet}
+                  showMoreButton={false}
                   showBottomBorder={false}
                   showLeftProfile={false}
                 />
               </div>
             }
-            { images && images.length === 1 &&
-              <img className="tweet-view-one-image" src={images[0]} alt="Tweets"/>
-            }
+            { images && (
+              ( 
+                images.length === 1 &&
+                <img className="tweet-view-one-image" src={images[0]} alt="Tweets"/>
+              ) ||
+              (
+                images.length === 2 &&
+                <div className="tweet-view-multi-image-container">
+                  {images.map((image, index) => (
+                    <img key={index} className="tweet-view-two-image" src={image} alt="Tweets"/>
+                  ))}
+                </div>
+              ) ||
+              (
+                images.length === 3 &&
+                <div className="tweet-view-multi-image-container">
+                  <img key={0} className="tweet-view-two-image" src={images[0]} alt="Tweets"/>
+                  <div className="tweet-view-right-column">
+                    {images.slice(1, 3).map((image, index) => (
+                      <img key={index} className="tweet-view-four-image" src={image} alt="Tweets"/>
+                    ))}
+                  </div>
+                </div>
+              ) ||
+              (
+                images.length === 4 &&
+                <div className="tweet-view-multi-image-container tweet-view-multi-image-two-row">
+                  {images.map((image, index) => (
+                    <img key={index} className="tweet-view-four-image" src={image} alt="Tweets"/>
+                  ))}
+                </div>
+              )
+            )}
           </div>
           {statistic &&
             <div className="tweet-view-statistic">
               <div className="tweet-view-statistic-icon-container">
                 <div className="reply-icon-container">
                   <ReplyIcon className="reply-icon"/>
+                  <div className="statistic-icon-text">
+                    Reply
+                  </div>
                 </div>
                 { statistic.replies > 0 &&
                   <p className="reply-icon-text">{ statisticNumberFormattor(statistic.replies) }</p>
@@ -97,6 +138,9 @@ export default function TweetView({
               <div className="tweet-view-statistic-icon-container">
                 <div className="retweet-icon-container">
                   <RetweetIcon className="retweet-icon"/>
+                  <div className="statistic-icon-text">
+                    Retweet
+                  </div>
                 </div>
                 { statistic.retweets > 0 &&
                   <p className="retweet-icon-text">{ statisticNumberFormattor(statistic.retweets) }</p>
@@ -105,6 +149,9 @@ export default function TweetView({
               <div className="tweet-view-statistic-icon-container">
                 <div className="like-icon-container">
                   <LikeIcon className="like-icon"/>
+                  <div className="statistic-icon-text">
+                    Like
+                  </div>
                 </div>
                 { statistic.likes > 0 &&
                   <p className="like-icon-text">{ statisticNumberFormattor(statistic.likes) }</p>
@@ -113,14 +160,20 @@ export default function TweetView({
               <div className="tweet-view-statistic-icon-container">
                 <div className="reply-icon-container">
                   <AnalyticsIcon className="reply-icon"/>
+                  <div className="statistic-icon-text">
+                    View
+                  </div>
                 </div>
                 { statistic.replies > 0 &&
-                  <p className="reply-icon-text">{ statisticNumberFormattor(statistic.replies) }</p>
+                  <p className="reply-icon-text">{ statisticNumberFormattor(statistic.views) }</p>
                 }
               </div>
               <div className="tweet-view-statistic-icon-container">
                 <div className="share-icon-container">
                   <ShareIcon className="share-icon"/>
+                  <div className="statistic-icon-text">
+                    Share
+                  </div>
                 </div>
               </div>
             </div>

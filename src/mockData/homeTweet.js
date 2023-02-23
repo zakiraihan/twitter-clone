@@ -22,11 +22,67 @@ function getMockDatesFromCurrentDate({ year = 0, date = 0, hour = 0, minutes = 0
 export const homeTweet = [
   {
     id: uuidv4().toString(),
+    profilePict: "https://pbs.twimg.com/profile_images/1593600735475687424/EOHlM5z4_400x400.jpg",
+    fullName: "SSSS.ayah",
+    username: "@SayaDoesStuff",
+    date: getMockDatesFromCurrentDate({minutes: 5}),
+    text: "Casual reminder that every gunpla builder should treat themselves with a HGCE Aile Strike, its a very good model kit!!",
+    images: [
+      "https://pbs.twimg.com/media/FpkvQcQakAA4TCx?format=jpg&name=large",
+      "https://pbs.twimg.com/media/FpkvQzxaMAEy4kf?format=jpg&name=large",
+      "https://pbs.twimg.com/media/FpkvRPNaQAQ1es9?format=jpg&name=large",
+    ],
+    statistic: {
+      replies: 762,
+      retweets: 31390,
+      likes: 230490,
+      views: 5309723
+    }
+  },
+  {
+    id: uuidv4().toString(),
+    profilePict: "https://pbs.twimg.com/profile_images/1623992191268839424/afgp0HTj_400x400.jpg",
+    fullName: "Tweets of Cats",
+    username: "@TweetsOfCats",
+    date: getMockDatesFromCurrentDate({hour: 2}),
+    images: [
+      "https://pbs.twimg.com/media/FpVUA2JWIAICyAl?format=jpg&name=large",
+      "https://pbs.twimg.com/media/FpVUA2IWYAcU6e2?format=jpg&name=large",
+      "https://pbs.twimg.com/media/FpVUA2IXgAAUkLQ?format=jpg&name=large",
+      "https://pbs.twimg.com/media/FpVUA2OWAAA2qZ1?format=jpg&name=large"
+    ],
+    statistic: {
+      replies: 762,
+      retweets: 31390,
+      likes: 230490,
+      views: 5309723
+    }
+  },
+  {
+    id: uuidv4().toString(),
+    profilePict: "https://pbs.twimg.com/profile_images/1623992191268839424/afgp0HTj_400x400.jpg",
+    fullName: "Tweets of Cats",
+    username: "@TweetsOfCats",
+    date: getMockDatesFromCurrentDate({hour: 8}),
+    text: "Monsieur cat",
+    images: [
+      "https://pbs.twimg.com/media/FpkoxFdWcAAwavH?format=jpg&name=large",
+      "https://pbs.twimg.com/media/FpkoxFfX0AAlz45?format=jpg&name=large"
+    ],
+    statistic: {
+      replies: 762,
+      retweets: 31390,
+      likes: 230490,
+      views: 5309723
+    }
+  },
+  {
+    id: uuidv4().toString(),
     profilePict: "https://pbs.twimg.com/profile_images/1582359892693762049/XXEwWLiU_400x400.jpg",
     fullName: "Poem Heaven",
     username: "@PoemHeaven",
     date: getMockDatesFromCurrentDate({minutes: 5}),
-    text: "numb.",
+    text: "Bogor Kota Hujan tapi Stasiunnya gapunya kanopi di peronnya, mungkin kurang kerja keras ini pak @CommuterLine @KAI121",
     images: [
       "https://pbs.twimg.com/media/FkKQgzTXkAMFZ_g?format=jpg&name=large"
     ],
